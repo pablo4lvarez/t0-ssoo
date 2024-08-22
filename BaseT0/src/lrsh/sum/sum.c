@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "sum.h"
+
 void sum_command(char *num1_str, char *num2_str) {
     pid_t pid = fork();
     if (pid == 0) {

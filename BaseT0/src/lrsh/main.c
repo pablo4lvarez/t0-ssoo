@@ -7,6 +7,7 @@
 #include "../input_manager/manager.h"
 #include "../lrsh/hello/hello.h"
 #include "../lrsh/sum/sum.h"
+#include "../lrsh/is_prime/is_prime.h"
 
 
 
@@ -19,6 +20,8 @@ int main(int argc, char const *argv[])
     hello_command();
   } else if (strcmp(input[0], "sum") == 0) {
     sum_command(input[1], input[2]);
+  } else if (strcmp(input[0], "is_prime") == 0) {
+    is_prime_command(input[1]);
   } 
 
   free_user_input(input);
