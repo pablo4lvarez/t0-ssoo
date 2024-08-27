@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>  // Para fork()
+#include <sys/wait.h> // Para wait()
 
 #include "is_prime.h"
 
@@ -12,19 +14,10 @@ int is_prime(int num) {
 }
 
 void is_prime_command(char *num_str) {
-    pid_t pid = fork();
-    if (pid == 0) {
-        // Proceso hijo
-        int num = atoi(num_str);
-        if (is_prime(num)) {
-            printf("%d es primo\n", num);
-        } else {
-            printf("%d no es primo\n", num);
-        }
-        exit(EXIT_SUCCESS);
-    } else if (pid < 0) {
-        perror("Error en fork");
+    int num = atoi(num_str);
+    if (is_prime(num)) {
+        printf("%d es primo\n", num);
     } else {
-        wait(NULL);
+        printf("%d no es primo\n", num);
     }
 }
