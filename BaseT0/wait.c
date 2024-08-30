@@ -14,8 +14,8 @@ int main(int argc, char *argv[]) {
     printf("Argumento 2: %s\n", argv[2]);
 
     // Esperar 2 segundos
-    printf("Esperando 2 segundos...\n");
-    sleep(2);
+    printf("Esperando 20000 segundos...\n");
+    sleep(20000);
 
     // Mensaje final
     printf("Tiempo de espera terminado.\n");

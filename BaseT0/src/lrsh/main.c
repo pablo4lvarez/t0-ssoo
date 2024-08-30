@@ -13,6 +13,7 @@
 #include "./lrlist/lrlist.h"
 #include "./lrexec/lrexec.h"
 #include "process.h"
+#include "./lrexit/lrexit.h"
 
 // Variables globales para acceso en el manejador de señales
 Process* processes;
@@ -30,6 +31,7 @@ void sigchld_handler(int sig) {
     }
 }
 
+
 int main(int argc, char const *argv[]) {
     processes = calloc(16, sizeof(Process));
     process_count = calloc(1, sizeof(int));
@@ -44,6 +46,9 @@ int main(int argc, char const *argv[]) {
         exit(EXIT_FAILURE);
     }
 
+    // Configurar el manejador de señales para SIGINT
+    signal(SIGINT, handle_sigint);
+
     while (1) {
         char** input = read_user_input();
 
@@ -56,6 +61,11 @@ int main(int argc, char const *argv[]) {
             lrlist_command(processes, *process_count);
             free_user_input(input);
             continue;
+        }
+
+        if (strcmp(input[0], "lrexit") == 0) {
+            lrexit_command();  // Llamar a lrexit_command cuando el comando es lrexit
+            break;  // Salir del bucle
         }
 
         pid_t pid = fork();
