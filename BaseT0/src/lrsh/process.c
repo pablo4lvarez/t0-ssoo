@@ -13,8 +13,7 @@ void add_process(pid_t pid, const char* name, Process* processes ,int* process_c
         printf("Name: %s\n", name);
         strcpy(processes[*process_count].name, name);
         processes[*process_count].start_time = time(NULL);
-        processes[*process_count].exit_code = -1; // Aún no ha terminado
-        (*process_count)++;
+        processes[*process_count].exit_code = -1; 
         printf("Process Count: %d\n", *process_count);
     }
 }

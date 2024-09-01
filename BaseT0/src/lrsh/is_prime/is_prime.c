@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>  // Para fork()
-#include <sys/wait.h> // Para wait()
+#include <unistd.h>
+#include <sys/wait.h> 
 
 #include "is_prime.h"
 

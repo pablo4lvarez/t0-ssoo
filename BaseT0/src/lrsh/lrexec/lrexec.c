@@ -3,13 +3,17 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <errno.h>
 
 int lrexec_command(char** input) {
-    // input[1] es el comando, y input[2], input[3], ... son los argumentos.
-    char *exec_args = input[1]; // Nombre del ejecutable
-    execvp(exec_args, &input[1]); // Ejecutar el comando con sus argumentos
+    char *exec_args = input[1];
+    execvp(exec_args, &input[1]);
 
-    // Si execvp falla, se llega a esta línea
-    perror("Error al ejecutar el comando");
+    if (errno == ENOENT) {
+        fprintf(stderr, "Error: el ejecutable '%s' no existe.\n", exec_args);
+    } else {
+        perror("Error al ejecutar el comando");
+    }
+
     exit(EXIT_FAILURE);
 }

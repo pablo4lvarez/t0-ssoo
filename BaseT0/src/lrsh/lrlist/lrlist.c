@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 #include <time.h>
-#include <unistd.h>  // Para fork()
+#include <unistd.h> 
 #include "lrlist.h"
 
 void lrlist_command(Process* processes, int process_count) {
@@ -9,8 +9,11 @@ void lrlist_command(Process* processes, int process_count) {
     printf("---------------------------------------------------------------\n");
 
     for (int i = 0; i < process_count; i++) {
-        double time_elapsed = (double)(processes[i].end_time - processes[i].start_time);
-        printf("%d\t%s\t%lf segundos\t\t%d\n",
+        int time_elapsed = (int)(time(NULL) - processes[i].start_time);
+        if (processes[i].exit_code != -1) {
+            time_elapsed = (int)(processes[i].end_time - processes[i].start_time);
+        }
+        printf("%d\t%s\t%d segundos\t\t%d\n",
             processes[i].pid,
             processes[i].name,
             time_elapsed,
