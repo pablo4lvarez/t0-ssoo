@@ -37,7 +37,6 @@ void lrexit_command() {
                 }
             }
         } else if (pid == 0) {
-            printf("Sin hijos terminados...\n");
             sleep(1);
         } else if (pid < 0) {
             break;

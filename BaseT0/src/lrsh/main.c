@@ -82,7 +82,7 @@ int main(int argc, char const *argv[]) {
                 is_prime_command(input[1]);
                 exit(EXIT_SUCCESS);
             } else if (strcmp(input[0], "lrexec") == 0) {
-                lrexec_command(input);
+                lrexec_command(input, process_count);
                 exit(EXIT_SUCCESS);
             } else {
                 fprintf(stderr, "Comando no reconocido: %s\n", input[0]);

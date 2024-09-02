@@ -1,1 +1,1 @@
-void lrexec_command(char** input);
+void lrexec_command(char** input, int* process_count);

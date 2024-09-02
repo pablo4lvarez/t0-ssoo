@@ -6,15 +6,13 @@
 #include "process.h"
 
 void add_process(pid_t pid, const char* name, Process* processes ,int* process_count) {
-    printf("Adding process %d\n", pid);
     if (*process_count < 16) {
         processes[*process_count].pid = pid;
         processes[*process_count].name = calloc(strlen(name) + 1, sizeof(char));
-        printf("Name: %s\n", name);
         strcpy(processes[*process_count].name, name);
         processes[*process_count].start_time = time(NULL);
-        processes[*process_count].exit_code = -1; 
-        printf("Process Count: %d\n", *process_count);
+        processes[*process_count].exit_code = -1;
+        (*process_count)++; 
     }
 }
 
