@@ -36,4 +36,4 @@ El repositorio contiene los siguientes archivos:
 ## Detalles
 
 - El comando `lrlist` incluye a todos los procesos que han sido llamados desde inició la shell.
-- En caso de que el comando `lrexec` falla por alguna razón, este no se mostrará en la lista de `lrlist`.
+- En caso de que el comando `lrexec` falla por alguna razón, este se muestra en la lista de `lrlist`, con el exit code -1.
